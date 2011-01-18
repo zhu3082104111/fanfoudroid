@@ -163,7 +163,7 @@ public class ImageManager implements ImageCache {
     }
 
     /**
-     * 下载远程图皮 -> 转换为Bitmap -> 写入缓存器.
+     * 下载远程图片 -> 转换为Bitmap -> 写入缓存器.
      * @param url
      * @param quality image quality 1～100
      * @throws IOException
