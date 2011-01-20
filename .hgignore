@@ -1,0 +1,6 @@
+Syntax:glob
+
+bin/*
+.svn/*
+release/*
+gen/*/R.java
