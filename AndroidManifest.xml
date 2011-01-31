@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      android:versionName="0.6.1beta" android:versionCode="20110128" package="com.ch_linghu.fanfoudroid">
+    <uses-sdk android:minSdkVersion="3" />
+	<supports-screens android:anyDensity="true"/>
+	          
+    <application
+        android:name="TwitterApplication"    
+        android:icon="@drawable/icon"
+        android:label="@string/app_name">
+        
+        <meta-data android:name="android.app.default_searchable"
+                   android:value=".SearchActivity" />
+        
+        <activity android:name=".LoginActivity"
+                  android:windowSoftInputMode="adjustResize|stateHidden"  
+                  android:label="@string/app_name">
+        </activity>
+         <activity android:name=".WriteActivity"
+                  android:windowSoftInputMode="adjustResize|stateHidden"  
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- <data android:mimeType="image/*" /> -->                
+            </intent-filter>
+            <intent-filter>
+				<action android:name="com.ch_linghu.fanfoudroid.NEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+             <intent-filter>
+                <action android:name="com.ch_linghu.fanfoudroid.REPOST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         <activity android:name=".WriteDmActivity"
+                  android:windowSoftInputMode="adjustResize|stateHidden"  
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.ch_linghu.fanfoudroid.DMSW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+          <activity android:name=".StatusActivity"
+                  android:windowSoftInputMode="adjustResize|stateHidden"  
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.ch_linghu.fanfoudroid.STATUS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TwitterActivity"
+                  android:windowSoftInputMode="adjustResize|stateHidden"  
+                  android:label="@string/app_name"
+                  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.ch_linghu.fanfoudroid.TWEETS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>                                                            
+        </activity>
+        <activity android:name=".FavoritesActivity"
+                  android:windowSoftInputMode="adjustResize|stateHidden"  
+                  android:label="@string/app_name"
+                  >
+            <intent-filter>
+                <action android:name="com.ch_linghu.fanfoudroid.TWEETS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>                                                            
+        </activity>
+        <activity android:name=".BrowseActivity"
+                  android:windowSoftInputMode="adjustResize|stateHidden"  
+                  android:label="@string/app_name"
+                  >
+            <intent-filter>
+                <action android:name="com.ch_linghu.fanfoudroid.TWEETS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>                                                            
+        </activity>
+        <!--  TODO: why need stateHidden on the magic? -->
+        <activity android:name=".MentionActivity"
+                  android:windowSoftInputMode="adjustResize|stateHidden"  
+                  android:label="@string/page_title_mentions">
+            <intent-filter>
+                <action android:name="com.ch_linghu.fanfoudroid.REPLIES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--  TODO: why need stateHidden on the magic? -->
+        <activity android:name=".DmActivity"
+                  android:windowSoftInputMode="adjustResize|stateHidden"  
+                  android:label="@string/page_title_direct_messages">
+            <intent-filter>
+                <action android:name="com.ch_linghu.fanfoudroid.DMS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>                              
+        </activity>
+        <activity android:name=".SearchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                       android:resource="@xml/searchable" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- TODO: do we dare handle http://twitter.com someday? -->
+                <data android:scheme="twitta"
+                      android:host="search" />                
+            </intent-filter>                                                                                    
+        </activity>                                                
+        <activity android:name=".UserActivity">
+            <intent-filter>
+                <action android:name="com.ch_linghu.fanfoudroid.USER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>                                      
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- TODO: do we dare handle http://twitter.com someday? -->
+                <data android:scheme="twitta"
+                      android:host="users" />                
+            </intent-filter>                                              
+        </activity>                                        
+        
+        <activity android:name=".PreferencesActivity"  
+                  android:label="@string/app_name" />
+                                    
+        <service android:name=".service.TwitterService" />
+
+        <receiver android:name=".service.BootReceiver">
+          <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+          </intent-filter>
+        </receiver>
+        
+    </application>
+        
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>    
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+	<uses-permission android:name="android.permission.CAMERA"/>
+	<uses-feature android:name="android.hardware.camera" />  
+	<uses-feature android:name="android.hardware.camera.autofocus" />  
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>
