@@ -3,7 +3,7 @@
   
 <string-array name="check_intervals">  
     <!-- item>1</item-->  <!--  MUST REMOVE. Just for testing. -->
-    <item>5</item>  
+    <item>3</item>  
     <item>10</item>  
     <item>30</item>  
     <item>60</item>
@@ -22,6 +22,13 @@
 	<!-- <item>@string/pref_photo_preview_type_thumbnail</item> -->
 	<item>@string/pref_photo_preview_type_middle</item>
 	<item>@string/pref_photo_preview_type_original</item>
+</string-array>
+
+<string-array name="ui_font_size">
+    <item>14</item>
+    <item>16</item>
+    <item>18</item>
+    <item>20</item>
 </string-array>
   
 </resources>
